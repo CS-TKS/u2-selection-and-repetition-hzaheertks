@@ -10,9 +10,10 @@ print("Welcome to your personalized Eco Report Card," , name, " — a fun and ey
 print("Let’s explore your habits and see where you shine… and where there’s room to grow a little greener!")
 
 print("Let's dive right in," , name, "!")
-print("-"*70)
+print()
+print("-"*100)
 print("Please enter the respective values below to calculate your total carbon emissions per year.")
-print("-"*70)
+print("-"*100)
 print()
 
 #List storing user inputs
@@ -111,7 +112,7 @@ else:
 
 
 #Storing categories in list
-emissions_list = [transport_emissions, food_emissions, waste_emissions] #LATER ADD ENERGY EMISSIONS
+emissions_list = [transport_emissions, energy_emissions, food_emissions, waste_emissions]
 categories = ["Transport", "Energy", "Food", "Waste"]
 
 #Finding highest category
@@ -135,6 +136,7 @@ if waste_emissions > highest_emission:
     highest_category = "Waste"
 
 #Output
+print()
 print("-"*50)
 print("Your Eco Report Card!")
 print("-"*50)
@@ -143,21 +145,58 @@ print(f"Energy emissions: {energy_emissions:.2f} tons CO2 / year")
 print(f"Food emissions: {food_emissions:.2f} tons CO2 / year")
 print(f"Waste emissions: {waste_emissions:.2f} tons CO2 / year")
 print()
-print("Your highest source of emissions is...", highest_emission, "!")
+print("Your highest source of emissions is...", highest_category, "!")
 
 #Quiz based on user's highest emission category (questions ChatGPTd)
+print()
 print("-"*50)
-print("Quick quiz time!")
+print("Quick quiz time! Let's learn more about ", highest_category, "!")
 print("-"*50)
 
 if highest_category == "Transport":
     input("How much CO2 does 1 gallon of gas emit?")
     print("Answer: around 8.89 tons")
 
-elif highest_category == ""
+elif highest_category == "Energy":
+    input("What is the primary source of energy used for electricity generation worldwide?")
+    print("Answer: fossil fuels")
 
+elif highest_category == "Food":
+    input("Which type of diet generally has the lowest carbon footprint?")
+    print("Answer: vegetarian!")
 
+elif highest_category == "Waste":
+    input("Why is recycling important for reducing carbon emissions? ")
+    print("Answer: conserves energy and reduced greenhouse gases!")
 
+#Personalized eco challenge, relevant to highest category
+print("-"*60)
+print("Personalized eco challenge just for you!")
 
+if highest_category == "Transport":
+    print("✰ Try carpooling or biking once a week")
 
-#TO DO LIST FORY NEXT CLASS, COMPARE TO KAUST CITIZEN, CREATe SUMMARY, DO QUIZ QUESTIONS, DO CHALLENGE
+elif highest_category == "Energy":
+    print("✰ Turn off devices completely instead of leaving them on standby")
+
+elif highest_category == "Food":
+    print("✰ Eat a vegetarian meal at least once a week.")
+
+elif highest_category == "Waste":
+    print("✰ Start separating your trash to recycle more efficiently.")
+
+#Final summary
+print("-"*60)
+print("Your final answers summary for reference!")
+for answers in user_input:
+    print("-" + answers)
+overall_emissions = transport_emissions + energy_emissions + food_emissions + waste_emissions
+print("Your individualized emission production rate is ", overall_emissions, "per year.")
+
+#Comparison to average KAUST citizen
+kaust_citizen = 18.89
+if overall_emissions > kaust_citizen:
+    print("Oh no! This rate is higher than the average KAUST inhabitant!")
+    print("Make sure to follow the eco challenge!")
+else:
+    print("This rate is lower than the average KAUST inhabitant! Good job!")
