@@ -35,10 +35,6 @@ vegetarian = 1.7
 meat = 3.3
 mixed = 2.5
 
-#Waste
-recycle = 0.6
-recycle_not = 1.7
-
 #Collecting input emissions (TRANSPORT)
 transport = ""
 while transport != "car" and transport != "bike" and transport != "bus" and transport != "walk":
