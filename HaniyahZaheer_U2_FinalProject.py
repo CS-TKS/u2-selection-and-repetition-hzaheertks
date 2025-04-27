@@ -57,7 +57,27 @@ else:
 
 
 #Collecting input emissions (ENERGY CONSUMPTION)
-#need to use try/except here - do a bit more research before working on this COME BACK TO THIS
+ac_hour = ""
+
+while True: #Experimentation of try/except with Ms. Tellez
+    try:
+        ac_hour = int(input("How many hours per day do you use air conditioning?"))
+        break
+    except ValueError:
+        print("Please enter a number.")
+
+user_input.append("AC use: "+ str(ac_hour) + "hrs/day")
+
+while True:
+    try:
+        screen_hour = int(input("How many hours per day do you spend on the screen?"))
+        break
+    except ValueError:
+        print("Please enter a number.")
+
+user_input.append("Screen time: "+ str(screen_hour) + "hrs/day")
+
+energy_emissions = (ac_hour * ac_per_hour + screen_hour * screen_per_hour) *365 / 100 #for metric tonnes / year
 
 
 #Collecting input emissions (FOOD)
@@ -84,9 +104,60 @@ while recycle != "yes" and recycle != "no":
     recycle = input("Do you recycle regularly (yes/no): ").lower()
 
 if recycle == "yes":
-    waste_emissions = recycle
+    waste_emissions = 0.6
 
 else:
-    waste_emissions = recycle_not
+    waste_emissions = 1.7
 
-#TO DO LIST FOR NEXT CLASS, COMPARE TO KAUST CITIZEN, DO ENERGY CONSUMPTION SECTION, CREATe SUMMARY, DO QUIZ QUESTIONS, DO CHALLENGE
+
+#Storing categories in list
+emissions_list = [transport_emissions, food_emissions, waste_emissions] #LATER ADD ENERGY EMISSIONS
+categories = ["Transport", "Energy", "Food", "Waste"]
+
+#Finding highest category
+highest_emission = 0
+highest_category = ""
+
+if transport_emissions > highest_emission:
+    highest_emission = transport_emissions
+    highest_category = "Transport"
+
+if energy_emissions > highest_emission:
+    highest_emission = energy_emissions
+    highest_category = "Energy"
+
+if food_emissions > highest_emission:
+    highest_emission = food_emissions
+    highest_category = "Food"
+
+if waste_emissions > highest_emission:
+    highest_emission = waste_emissions
+    highest_category = "Waste"
+
+#Output
+print("-"*50)
+print("Your Eco Report Card!")
+print("-"*50)
+print(f"Transport emissions: {transport_emissions:.2f} tons CO2 / year")
+print(f"Energy emissions: {energy_emissions:.2f} tons CO2 / year")
+print(f"Food emissions: {food_emissions:.2f} tons CO2 / year")
+print(f"Waste emissions: {waste_emissions:.2f} tons CO2 / year")
+print()
+print("Your highest source of emissions is...", highest_emission, "!")
+
+#Quiz based on user's highest emission category (questions ChatGPTd)
+print("-"*50)
+print("Quick quiz time!")
+print("-"*50)
+
+if highest_category == "Transport":
+    input("How much CO2 does 1 gallon of gas emit?")
+    print("Answer: around 8.89 tons")
+
+elif highest_category == ""
+
+
+
+
+
+#TO DO LIST FORY NEXT CLASS, COMPARE TO KAUST CITIZEN, CREATe SUMMARY, DO QUIZ QUESTIONS, DO CHALLENGE
